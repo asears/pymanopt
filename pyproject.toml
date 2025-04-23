@@ -10,24 +10,23 @@ description = """\
   differentiation\
 """
 authors = [
-  {name = "Jamie Townsend"},
-  {name = "Niklas Koep"},
-  {name = "Sebastian Weichwald"},
+  { name = "Jamie Townsend" },
+  { name = "Niklas Koep" },
+  { name = "Sebastian Weichwald" },
 ]
 readme = "README.md"
-license = {text = "BSD 3-Clause License"}
+license = { text = "BSD 3-Clause License" }
 requires-python = ">=3.8"
-keywords = [
-  "manifolds",
-  "optimization",
-  "automatic differentiation",
-]
+keywords = ["manifolds", "optimization", "automatic differentiation"]
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.6",
   "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Topic :: Scientific/Engineering",
   "Topic :: Scientific/Engineering :: Mathematics",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -35,30 +34,16 @@ classifiers = [
   "Intended Audience :: Science/Research",
   "Development Status :: 5 - Production/Stable",
 ]
-dependencies = [
-  "numpy>=1.16.0",
-  "scipy>=1.0,!=1.10.*,!=1.11.*,!=1.12.*",
-]
+dependencies = ["numpy>=1.16.0", "scipy>=1.0,!=1.10.*,!=1.11.*,!=1.12.*"]
 [project.urls]
 homepage = "https://pymanopt.org"
 
 [project.optional-dependencies]
-autograd = [
-  "autograd>=1.2",
-]
-jax = [
-  "jax>=0.2.0",
-  "jaxlib",
-]
-tensorflow = [
-  "tensorflow>=2.0.0",
-]
-torch = [
-  "torch>=1.0.0",
-]
-backends = [
-  "pymanopt[autograd,jax,tensorflow,torch]",
-]
+autograd = ["autograd>=1.2"]
+jax = ["jax>=0.2.0", "jaxlib"]
+tensorflow = ["tensorflow>=2.0.0"]
+torch = ["torch>=1.0.0"]
+backends = ["pymanopt[autograd,jax,tensorflow,torch]"]
 dev = [
   "black[jupyter]==22.3.0",
   "flake8==5.0.4",
@@ -81,15 +66,8 @@ docs = [
   "sphinx_rtd_theme==1.0.0",
   "sphinxcontrib-katex==0.8.6",
 ]
-ci = [
-  "build==0.8.0",
-  "pip==22.3.1",
-  "setuptools==66.1.0",
-  "wheel==0.38.4",
-]
-all = [
-  "pymanopt[backends,dev]",
-]
+ci = ["build==0.8.0", "pip==22.3.1", "setuptools==66.1.0", "wheel==0.38.4"]
+all = ["pymanopt[backends,dev]"]
 [tool.setuptools_scm]
 write_to = "src/pymanopt/_version.py"
 
@@ -113,10 +91,7 @@ use_parentheses = true
 [tool.flake8]
 application_import_names = "pymanopt"
 docstring-convention = "google"
-exclude = [
-  "examples/notebooks/*.py",
-  "build"
-]
+exclude = ["examples/notebooks/*.py", "build"]
 ignore = ["B024", "B027", "D1", "E203", "E501", "W503"]
 import_order_style = "pycharm"
 max-line-length = 79
@@ -124,16 +99,131 @@ select = ["B", "B950", "C", "D", "E", "F", "W"]
 
 [tool.ruff]
 src = ["src", "tests", "examples"]
-exclude = [
-  "examples/notebooks/*.py",
-  "build"
-]
+exclude = ["examples/notebooks/*.py", "build"]
 line-length = 79
 output-format = "concise"
 
 [tool.ruff.lint]
-select = ["B", "C", "D", "E", "F", "W", "I"]
-ignore = ["B024", "B027", "D1", "E203", "E501"]
+select = [
+  "A",
+  "ANN",
+  "B",
+  "C",
+  "D",
+  "E",
+  "EM",
+  "F",
+  "FIX",
+  "FLY",
+  "FURB",
+  "I",
+  "ICN",
+  "ISC",
+  "LOG",
+  "N",
+  "NPY",
+  "PD",
+  "PERF",
+  "PGH",
+  "PL",
+  "PT",
+  "PYI",
+  "Q",
+  "RET",
+  "RUF",
+  "S",
+  "TD",
+  "TID",
+  "TRY",
+  "UP",
+  "W",
+  # "ERA",
+]
+ignore = [
+  "ANN001",
+  "ANN002",
+  "ANN003",
+  "ANN101",
+  "ANN102",
+  "ANN201",
+  "ANN202",
+  "ANN204",
+  "B024",
+  "B027",
+  "B028",
+  "B904",
+  "C419",
+  "C901",
+  "COM812",
+  "D1",
+  "D200",
+  "D203",
+  "D205",
+  "D212",
+  "D213",
+  "D400",
+  "D401",
+  "D411",
+  "D413",
+  "D415",
+  "D417",
+  "DTZ",
+  "E203",
+  "E402",
+  "E501",
+  "EM101",
+  "EM102",
+  "FURB105",
+  "ISC001",
+  "N801",
+  "N803",
+  "N806",
+  "PGH004",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+  "PLR2004",
+  "PT004",
+  "PT011",
+  "PYI024",
+  "RET507",
+  "RUF012",
+  "S101",
+  "T201",
+  "TID252",
+  "TRY003",
+  "TRY004",
+  "UP027",
+  "UP032",
+  "UP034",
+  "ICN001",
+  "TD001",
+  "RET504",
+  "ANN205",
+  "FIX001",
+  "TD003",
+  "NPY002",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/conf.py" = [
+  "A",
+  "ANN",
+  "ANN",
+  "ARG",
+  "COM",
+  "CPY",
+  "D",
+  "D",
+  "DTZ",
+  "FIX",
+  "INP",
+  "PLR",
+  "T",
+  "T201",
+  "TD",
+  "UP",
+]
 
 [tool.ruff.format]
 exclude = ["*.pyi"]

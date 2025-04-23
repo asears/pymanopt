@@ -12,20 +12,15 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Set up python 3.8
-        uses: actions/setup-python@v4
+      - name: Install the latest version of uv and set the python version to 3.12
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: 3.8
-          cache: pip
-          cache-dependency-path: pyproject.toml
-
-      - name: Checkout
-        uses: actions/checkout@v2
+          python-version: 3.12
 
       - name: Install dependencies
         run: pip install -e ".[ci]"
@@ -34,13 +29,13 @@ jobs:
         run: python -m build
 
       - name: Verify tag name
-        uses: nowsprinting/check-version-format-action@v3
+        uses: nowsprinting/check-version-format-action@v4
         id: tag
 
-      - name: Publish tag to pypi
-        if: >
-          startsWith(github.ref, 'refs/tags/') &&
-          steps.tag.outputs.is_valid == 'true'
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+      # - name: Publish tag to pypi
+      #   if: >
+      #     startsWith(github.ref, 'refs/tags/') &&
+      #     steps.tag.outputs.is_valid == 'true'
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   with:
+      #     password: ${{ secrets.PYPI_API_TOKEN }}
